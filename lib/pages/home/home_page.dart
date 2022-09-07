@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,10 +11,17 @@ class HomePage extends StatelessWidget {
         title: const Text('HomePage'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'HomePage is working',
-          style: TextStyle(fontSize: 20),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed('/basic');
+              },
+              child: const Text('Básico'),
+            ),
+          ],
         ),
       ),
     );

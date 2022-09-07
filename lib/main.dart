@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'pages/basic/basic_page.dart';
 import 'pages/home/home_page.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/home',
       getPages: [
         GetPage(name: '/home', page: HomePage.new),
+        GetPage(name: '/basic', page: BasicPage.new),
       ],
     );
   }
