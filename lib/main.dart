@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wakelock/wakelock.dart';
 
 import 'pages/basic/basic_page.dart';
 import 'pages/home/home_page.dart';
+import 'pages/methods/lazy_put/lazy_put_page.dart';
+import 'pages/methods/methods_page.dart';
+import 'pages/methods/put/put_page.dart';
+import 'pages/methods/put_async/put_async_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Wakelock.enable();
+
   runApp(const MyApp());
 }
 
@@ -19,8 +28,17 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       getPages: [
-        GetPage(name: '/home', page: HomePage.new),
-        GetPage(name: '/basic', page: BasicPage.new),
+        GetPage(name: '/home', page: () => const HomePage()),
+        GetPage(name: '/basic', page: () => const BasicPage()),
+        GetPage(
+          name: '/methods',
+          page: () => const MethodsPage(),
+          children: [
+            GetPage(name: '/put', page: () => const PutPage()),
+            GetPage(name: '/lazy-put', page: () => LazyPutPage()),
+            GetPage(name: '/put-async', page: () => PutAsyncPage()),
+          ],
+        ),
       ],
     );
   }

@@ -21,6 +21,12 @@ class HomePage extends StatelessWidget {
               },
               child: const Text('Básico'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed('/methods');
+              },
+              child: const Text('Métodos'),
+            ),
           ],
         ),
       ),
