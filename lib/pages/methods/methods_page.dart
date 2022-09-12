@@ -41,6 +41,18 @@ class MethodsPage extends StatelessWidget {
                 },
                 child: const Text('Create'),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed('/methods/replace');
+                },
+                child: const Text('Replace'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed('/methods/delete');
+                },
+                child: const Text('Delete'),
+              ),
             ],
           ),
         ),
