@@ -35,6 +35,12 @@ class MethodsPage extends StatelessWidget {
                 },
                 child: const Text('Put Async'),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed('/methods/create');
+                },
+                child: const Text('Create'),
+              ),
             ],
           ),
         ),

@@ -4,6 +4,7 @@ import 'package:wakelock/wakelock.dart';
 
 import 'pages/basic/basic_page.dart';
 import 'pages/home/home_page.dart';
+import 'pages/methods/create/create_page.dart';
 import 'pages/methods/lazy_put/lazy_put_page.dart';
 import 'pages/methods/methods_page.dart';
 import 'pages/methods/put/put_page.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/put', page: () => const PutPage()),
             GetPage(name: '/lazy-put', page: () => LazyPutPage()),
             GetPage(name: '/put-async', page: () => PutAsyncPage()),
+            GetPage(name: '/create', page: () => CreatePage()),
           ],
         ),
       ],
