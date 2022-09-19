@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:wakelock/wakelock.dart';
 
 import 'pages/basic/basic_page.dart';
+import 'pages/bindings/bindings_controller.dart';
+import 'pages/bindings/bindings_example.dart';
+import 'pages/bindings/bindings_page.dart';
 import 'pages/home/home_page.dart';
 import 'pages/methods/create/create_page.dart';
 import 'pages/methods/delete/delete_page.dart';
@@ -51,6 +54,27 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ],
+        ),
+        GetPage(
+          name: '/bindings',
+          binding: BindingsExample(),
+          page: () => const BindingsPage(),
+        ),
+        GetPage(
+          name: '/bindings-builder',
+          binding: BindingsBuilder(
+            () => Get.lazyPut<BindingsController>(
+              () => BindingsController(name: 'Inicializado dentro do BindingsBuilder'),
+            ),
+          ),
+          page: () => const BindingsPage(),
+        ),
+        GetPage(
+          name: '/bindings-builder-put',
+          binding: BindingsBuilder.put(
+            () => BindingsController(name: 'Inicializado dentro do BindingsBuilderPut'),
+          ),
+          page: () => const BindingsPage(),
         ),
       ],
     );
