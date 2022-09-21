@@ -6,6 +6,7 @@ import 'pages/basic/basic_page.dart';
 import 'pages/bindings/bindings_controller.dart';
 import 'pages/bindings/bindings_example.dart';
 import 'pages/bindings/bindings_page.dart';
+import 'pages/bindings/middleware_binding.dart';
 import 'pages/home/home_page.dart';
 import 'pages/methods/create/create_page.dart';
 import 'pages/methods/delete/delete_page.dart';
@@ -15,9 +16,13 @@ import 'pages/methods/methods_page.dart';
 import 'pages/methods/put/put_page.dart';
 import 'pages/methods/put_async/put_async_page.dart';
 import 'pages/methods/replace/replace_page.dart';
+import 'pages/services/services_page.dart';
+import 'pages/services/storage_service.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Get.putAsync(() => StorageService().init());
 
   Wakelock.enable();
 
@@ -57,6 +62,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/bindings',
+          middlewares: [MiddlewareBinding()],
           binding: BindingsExample(),
           page: () => const BindingsPage(),
         ),
@@ -75,6 +81,10 @@ class MyApp extends StatelessWidget {
             () => BindingsController(name: 'Inicializado dentro do BindingsBuilderPut'),
           ),
           page: () => const BindingsPage(),
+        ),
+        GetPage(
+          name: '/services',
+          page: () => const ServicesPage(),
         ),
       ],
     );
